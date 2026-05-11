@@ -1,0 +1,943 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Портфоліо — Тесленко Антон</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #F5F3EE;
+    --bg-card: #FAFAF8;
+    --ink: #1A1916;
+    --ink-2: #6B6960;
+    --ink-3: #B0AEA6;
+    --accent: #2D2D2A;
+    --accent-warm: #C17A3A;
+    --border: rgba(26,25,22,0.10);
+    --border-strong: rgba(26,25,22,0.18);
+    --radius: 2px;
+    --radius-lg: 6px;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 16px;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.25rem 5vw;
+    background: rgba(245,243,238,0.85);
+    backdrop-filter: blur(12px);
+    border-bottom: 0.5px solid var(--border);
+  }
+
+  .nav-logo {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.15rem;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+    text-decoration: none;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 2.5rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-size: 0.875rem;
+    font-weight: 300;
+    color: var(--ink-2);
+    text-decoration: none;
+    letter-spacing: 0.02em;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--ink); }
+
+  .nav-cta {
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--ink) !important;
+    border: 0.5px solid var(--border-strong) !important;
+    padding: 0.5rem 1.25rem;
+    border-radius: var(--radius);
+    transition: background 0.2s, color 0.2s !important;
+  }
+  .nav-cta:hover { background: var(--ink) !important; color: var(--bg) !important; }
+
+  /* SECTIONS */
+  section { padding: 6rem 5vw; }
+
+  .container { max-width: 1080px; margin: 0 auto; }
+
+  /* HERO */
+  #hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding-top: 8rem;
+  }
+
+  .hero-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: center;
+    max-width: 1080px;
+    margin: 0 auto;
+    width: 100%;
+  }
+
+  .hero-eyebrow {
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--accent-warm);
+    margin-bottom: 1.25rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .hero-eyebrow::before {
+    content: '';
+    display: block;
+    width: 2rem;
+    height: 0.5px;
+    background: var(--accent-warm);
+  }
+
+  .hero-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(3rem, 5vw, 4.5rem);
+    line-height: 1.08;
+    letter-spacing: -0.03em;
+    color: var(--ink);
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-title em {
+    font-style: italic;
+    color: var(--ink-2);
+  }
+
+  .hero-desc {
+    font-size: 1.05rem;
+    font-weight: 300;
+    color: var(--ink-2);
+    line-height: 1.8;
+    max-width: 420px;
+    margin-bottom: 2.5rem;
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.85rem;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    color: var(--bg);
+    background: var(--ink);
+    padding: 0.75rem 1.75rem;
+    border-radius: var(--radius);
+    text-decoration: none;
+    transition: transform 0.2s, background 0.2s;
+  }
+  .btn-primary:hover { transform: translateY(-1px); background: #2D2D2A; }
+
+  .btn-ghost {
+    font-size: 0.85rem;
+    font-weight: 300;
+    color: var(--ink-2);
+    text-decoration: none;
+    border-bottom: 0.5px solid var(--border-strong);
+    padding-bottom: 1px;
+    transition: color 0.2s;
+  }
+  .btn-ghost:hover { color: var(--ink); }
+
+  .hero-visual {
+    position: relative;
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  .avatar-wrap {
+    position: relative;
+    width: 360px;
+    height: 440px;
+  }
+
+  .avatar-bg {
+    position: absolute;
+    inset: 0;
+    background: #E8E4DC;
+    border-radius: var(--radius-lg);
+  }
+
+  .avatar-img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: var(--radius-lg);
+    display: none;
+  }
+
+  .avatar-placeholder {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    color: var(--ink-3);
+  }
+
+  .avatar-placeholder svg { opacity: 0.4; }
+
+  .avatar-badge {
+    position: absolute;
+    bottom: -1.25rem;
+    left: -1.5rem;
+    background: var(--bg-card);
+    border: 0.5px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 1rem 1.25rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.06);
+  }
+
+  .badge-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #4CAF7D;
+    flex-shrink: 0;
+    animation: pulse 2s ease-in-out infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.4; }
+  }
+
+  .badge-text {
+    font-size: 0.8rem;
+    font-weight: 400;
+    color: var(--ink-2);
+    white-space: nowrap;
+  }
+  .badge-text strong { color: var(--ink); font-weight: 500; }
+
+  /* STATS */
+  .stats-row {
+    display: flex;
+    gap: 3rem;
+    flex-wrap: wrap;
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 0.5px solid var(--border);
+  }
+
+  .stat-item .num {
+    font-family: 'DM Serif Display', serif;
+    font-size: 2.25rem;
+    letter-spacing: -0.03em;
+    color: var(--ink);
+    display: block;
+  }
+
+  .stat-item .label {
+    font-size: 0.8rem;
+    font-weight: 300;
+    color: var(--ink-3);
+    letter-spacing: 0.04em;
+  }
+
+  /* SERVICES */
+  #services { background: var(--ink); color: var(--bg); }
+  #services .section-label { color: rgba(245,243,238,0.4); }
+  #services .section-title { color: var(--bg); }
+  #services .section-title em { color: rgba(245,243,238,0.5); }
+
+  .section-label {
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent-warm);
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .section-label::before {
+    content: '';
+    width: 1.5rem;
+    height: 0.5px;
+    background: currentColor;
+  }
+
+  .section-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(2rem, 3.5vw, 3rem);
+    letter-spacing: -0.025em;
+    line-height: 1.15;
+    margin-bottom: 3.5rem;
+  }
+
+  .section-title em { font-style: italic; }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1px;
+    border: 1px solid rgba(245,243,238,0.08);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+  }
+
+  .service-card {
+    padding: 2rem;
+    border-right: 1px solid rgba(245,243,238,0.08);
+    transition: background 0.3s;
+  }
+
+  .service-card:last-child { border-right: none; }
+  .service-card:hover { background: rgba(245,243,238,0.04); }
+
+  .service-num {
+    font-family: 'DM Serif Display', serif;
+    font-size: 0.85rem;
+    color: rgba(245,243,238,0.25);
+    margin-bottom: 1.5rem;
+  }
+
+  .service-icon {
+    width: 2.5rem;
+    height: 2.5rem;
+    margin-bottom: 1.25rem;
+    opacity: 0.9;
+  }
+
+  .service-title {
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--bg);
+    margin-bottom: 0.75rem;
+  }
+
+  .service-desc {
+    font-size: 0.875rem;
+    font-weight: 300;
+    color: rgba(245,243,238,0.55);
+    line-height: 1.75;
+  }
+
+  /* WORK */
+  .work-header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    margin-bottom: 3.5rem;
+  }
+
+  .work-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+
+  .work-card {
+    background: var(--bg-card);
+    border: 0.5px solid var(--border);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    transition: transform 0.25s, box-shadow 0.25s;
+    cursor: pointer;
+  }
+
+  .work-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 40px rgba(26,25,22,0.09);
+  }
+
+  .work-card.featured {
+    grid-column: span 2;
+  }
+
+  .work-thumb {
+    width: 100%;
+    aspect-ratio: 16/8;
+    background: #E8E4DC;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--ink-3);
+    font-size: 0.8rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    font-weight: 300;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .work-card.featured .work-thumb {
+    aspect-ratio: 16/6;
+  }
+
+  .work-thumb-inner {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+  }
+
+  .thumb-shape {
+    border-radius: var(--radius);
+    background: rgba(26,25,22,0.08);
+  }
+
+  .work-info {
+    padding: 1.5rem;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+
+  .work-category {
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent-warm);
+    margin-bottom: 0.35rem;
+  }
+
+  .work-name {
+    font-size: 1rem;
+    font-weight: 400;
+    color: var(--ink);
+    line-height: 1.4;
+  }
+
+  .work-arrow {
+    flex-shrink: 0;
+    width: 32px;
+    height: 32px;
+    border: 0.5px solid var(--border-strong);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--ink-2);
+    transition: background 0.2s, color 0.2s;
+  }
+
+  .work-card:hover .work-arrow {
+    background: var(--ink);
+    color: var(--bg);
+    border-color: var(--ink);
+  }
+
+  /* PROCESS */
+  #process { background: var(--bg-card); }
+
+  .process-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 0;
+    position: relative;
+  }
+
+  .process-step {
+    padding: 2.5rem 2rem;
+    border-right: 0.5px solid var(--border);
+    position: relative;
+  }
+
+  .process-step:last-child { border-right: none; }
+
+  .process-num {
+    font-family: 'DM Serif Display', serif;
+    font-size: 3.5rem;
+    color: var(--border);
+    line-height: 1;
+    margin-bottom: 1rem;
+  }
+
+  .process-step-title {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--ink);
+    margin-bottom: 0.5rem;
+  }
+
+  .process-step-desc {
+    font-size: 0.8rem;
+    font-weight: 300;
+    color: var(--ink-2);
+    line-height: 1.7;
+  }
+
+  /* TESTIMONIALS */
+  .testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .testimonial-card {
+    background: var(--bg-card);
+    border: 0.5px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 2rem;
+  }
+
+  .quote-mark {
+    font-family: 'DM Serif Display', serif;
+    font-size: 4rem;
+    line-height: 0.6;
+    color: var(--border-strong);
+    margin-bottom: 1.25rem;
+  }
+
+  .quote-text {
+    font-size: 0.925rem;
+    font-weight: 300;
+    color: var(--ink-2);
+    line-height: 1.8;
+    margin-bottom: 1.5rem;
+    font-style: italic;
+  }
+
+  .quote-author {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .author-avatar {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: var(--bg);
+    border: 0.5px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.7rem;
+    font-weight: 500;
+    color: var(--ink-2);
+    flex-shrink: 0;
+  }
+
+  .author-name {
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--ink);
+  }
+  .author-role {
+    font-size: 0.75rem;
+    color: var(--ink-3);
+    font-weight: 300;
+  }
+
+  /* CONTACT */
+  #contact {
+    background: var(--ink);
+    text-align: center;
+    padding: 8rem 5vw;
+  }
+
+  #contact .section-label {
+    justify-content: center;
+    color: rgba(245,243,238,0.35);
+  }
+
+  .contact-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    letter-spacing: -0.03em;
+    color: var(--bg);
+    line-height: 1.1;
+    margin-bottom: 1.25rem;
+  }
+
+  .contact-title em { font-style: italic; color: rgba(245,243,238,0.5); }
+
+  .contact-sub {
+    font-size: 1rem;
+    font-weight: 300;
+    color: rgba(245,243,238,0.5);
+    margin-bottom: 2.5rem;
+  }
+
+  .contact-links {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .btn-light {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.85rem;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    color: var(--ink);
+    background: var(--bg);
+    padding: 0.875rem 2rem;
+    border-radius: var(--radius);
+    text-decoration: none;
+    transition: transform 0.2s;
+  }
+  .btn-light:hover { transform: translateY(-1px); }
+
+  .btn-outline-light {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.85rem;
+    font-weight: 300;
+    letter-spacing: 0.04em;
+    color: rgba(245,243,238,0.7);
+    background: transparent;
+    padding: 0.875rem 2rem;
+    border-radius: var(--radius);
+    border: 0.5px solid rgba(245,243,238,0.2);
+    text-decoration: none;
+    transition: border-color 0.2s, color 0.2s;
+  }
+  .btn-outline-light:hover { border-color: rgba(245,243,238,0.5); color: var(--bg); }
+
+  /* FOOTER */
+  footer {
+    padding: 2rem 5vw;
+    background: var(--ink);
+    border-top: 0.5px solid rgba(245,243,238,0.08);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .footer-copy {
+    font-size: 0.78rem;
+    font-weight: 300;
+    color: rgba(245,243,238,0.3);
+  }
+
+  .footer-links {
+    display: flex;
+    gap: 1.5rem;
+    list-style: none;
+  }
+
+  .footer-links a {
+    font-size: 0.78rem;
+    font-weight: 300;
+    color: rgba(245,243,238,0.3);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .footer-links a:hover { color: rgba(245,243,238,0.7); }
+
+  /* ANIMATIONS */
+  .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* MOBILE */
+  @media (max-width: 768px) {
+    .hero-grid { grid-template-columns: 1fr; gap: 3rem; }
+    .hero-visual { justify-content: center; }
+    .avatar-wrap { width: 100%; max-width: 320px; height: 380px; }
+    .avatar-badge { left: 0; }
+    .work-grid { grid-template-columns: 1fr; }
+    .work-card.featured { grid-column: span 1; }
+    .nav-links { display: none; }
+    .stats-row { gap: 2rem; }
+  }
+
+  @media (max-width: 480px) {
+    section { padding: 4rem 5vw; }
+    .hero-title { font-size: 2.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">Тесленко Антон</a>
+  <ul class="nav-links">
+    <li><a href="#services">Послуги</a></li>
+    <li><a href="#work">Роботи</a></li>
+    <li><a href="#process">Процес</a></li>
+    <li><a href="#contact" class="nav-cta">Зв'язатись</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-grid container">
+    <div>
+      <div class="hero-eyebrow">Доступний для нових проектів</div>
+      <h1 class="hero-title">
+        Фрілансер<br>
+        що <em>вирішує</em><br>
+        задачі
+      </h1>
+      <div class="hero-actions">
+        <a href="#work" class="btn-primary">
+          Переглянути роботи
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M7 2l5 5-5 5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <a href="#contact" class="btn-ghost">Обговорити проєкт</a>
+      </div>
+      <div class="stats-row reveal">
+        <div class="stat-item">
+          <span class="num">47+</span>
+          <span class="label">Завершених проєктів</span>
+        </div>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="avatar-wrap">
+        <div class="avatar-bg"></div>
+        <div class="avatar-placeholder">
+          <svg width="56" height="56" viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="28" cy="20" r="10" stroke="#B0AEA6" stroke-width="1.5"/>
+            <path d="M8 48c0-11 9-18 20-18s20 7 20 18" stroke="#B0AEA6" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+          <span style="font-size:0.75rem;letter-spacing:0.08em;text-transform:uppercase;font-weight:300;">Ваше фото</span>
+        </div>
+        <div class="avatar-badge">
+          <div class="badge-dot"></div>
+          <div class="badge-text"><strong>Відкритий</strong> для співпраці</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- WORK -->
+<section id="work">
+  <div class="container">
+    <div class="work-header">
+      <div>
+        <div class="section-label reveal">Вибрані роботи</div>
+        <h2 class="section-title reveal" style="margin-bottom:0">Нещодавні<br><em>роботи</em></h2>
+      </div>
+      <a href="#" class="btn-ghost reveal">Всі роботи</a>
+    </div>
+    <div class="work-grid">
+
+      <div class="work-card featured reveal">
+        <div class="work-thumb">
+          <div class="work-thumb-inner">
+            <div class="thumb-shape" style="width:180px;height:90px;"></div>
+            <div style="display:flex;flex-direction:column;gap:8px;">
+              <div class="thumb-shape" style="width:100px;height:12px;"></div>
+              <div class="thumb-shape" style="width:70px;height:8px;"></div>
+              <div class="thumb-shape" style="width:85px;height:8px;"></div>
+            </div>
+          </div>
+        </div>
+        <div class="work-info">
+          <div>
+            <div class="work-category">Наукова робота.2026</div>
+            <div class="work-name">Дослідження ефективності сонячних панелей</div>
+          </div>
+          <div class="work-arrow">
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M7 2l5 5-5 5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+        </div>
+      </div>
+
+      <div class="work-card reveal">
+        <div class="work-thumb">
+          <div class="work-thumb-inner">
+            <div style="display:flex;flex-direction:column;gap:6px;align-items:center;">
+              <div class="thumb-shape" style="width:60px;height:60px;border-radius:50%;"></div>
+              <div class="thumb-shape" style="width:80px;height:10px;"></div>
+              <div class="thumb-shape" style="width:55px;height:8px;"></div>
+            </div>
+          </div>
+        </div>
+        <div class="work-info">
+          <div>
+            <div class="work-category">Репетиторство.2026</div>
+            <div class="work-name">Відкрита форма для запису на заняття з математики</div>
+          </div>
+          <div class="work-arrow">
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M7 2l5 5-5 5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+        </div>
+      </div>
+
+      <div class="work-card reveal">
+        <div class="work-thumb">
+          <div class="work-thumb-inner">
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;">
+              <div class="thumb-shape" style="height:50px;"></div>
+              <div class="thumb-shape" style="height:50px;"></div>
+              <div class="thumb-shape" style="height:50px;grid-column:span 2;"></div>
+            </div>
+          </div>
+        </div>
+        <div class="work-info">
+          <div>
+            <div class="work-category">Підготовка до вступу 2026</div>
+            <div class="work-name">Консультації з питань про вступ 2026</div>
+          </div>
+          <div class="work-arrow">
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M7 2l5 5-5 5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section id="process">
+  <div class="container">
+    <div class="section-label reveal">Як я працюю</div>
+    <h2 class="section-title reveal">Простий і прозорий<br><em>процес</em></h2>
+    <div class="process-grid reveal">
+      <div class="process-step">
+        <div class="process-num">01</div>
+        <div class="process-step-title">Знайомство</div>
+        <div class="process-step-desc">Розбираємось у задачі, цілях та очікуваннях. Узгоджуємо обсяг та терміни.</div>
+      </div>
+      <div class="process-step">
+        <div class="process-num">02</div>
+        <div class="process-step-title">Планування</div>
+        <div class="process-step-desc">Складаю детальний план, вайрфрейми або технічне завдання для узгодження.</div>
+      </div>
+      <div class="process-step">
+        <div class="process-num">03</div>
+        <div class="process-step-title">Реалізація</div>
+        <div class="process-step-desc">Виконую роботу ітераційно з регулярними оновленнями про прогрес.</div>
+      </div>
+      <div class="process-step">
+        <div class="process-num">04</div>
+        <div class="process-step-title">Здача</div>
+        <div class="process-step-desc">Ретельне тестування, фінальні правки та передача всіх матеріалів.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="container">
+    <div class="section-label">Контакт</div>
+    <h2 class="contact-title">
+      Є ідея?<br>
+      <em>Давайте поговоримо</em>
+    </h2>
+    <p class="contact-sub">Відповідаю протягом 24 годин</p>
+    <div class="contact-links">
+      <a href="mailto:hello@yourname.com" class="btn-light">
+        Написати листа
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M7 2l5 5-5 5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+      <a href="https://t.me/yourtelegram" class="btn-outline-light">Telegram</a>
+      <a href="https://linkedin.com/in/yourprofile" class="btn-outline-light">LinkedIn</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-copy">© 2026 Тесленко Антон. Всі права захищено.</div>
+  <ul class="footer-links">
+    <li><a href="#services">Послуги</a></li>
+    <li><a href="#work">Роботи</a></li>
+    <li><a href="#contact">Контакт</a></li>
+  </ul>
+</footer>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), i * 80);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12 });
+
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      const target = document.querySelector(a.getAttribute('href'));
+      if (target) {
+        e.preventDefault();
+        target.scrollIntoView({ behavior: 'smooth' });
+      }
+    });
+  });
+</script>
+</body>
+</html>
